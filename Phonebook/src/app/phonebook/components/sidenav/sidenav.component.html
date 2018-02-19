@@ -1,0 +1,27 @@
+<div class="main-container" [class.sidenav-is-mobile]="mobileQuery.matches">
+  <mat-toolbar color="primary" class="phonebook-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="phonebook">Phonebook</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+      <mat-nav-list>
+        <mat-list-item *ngFor="let user of users | async">
+          <a matLine [routerLink]="['/phonebook', user.id]"> 
+            <mat-icon svgIcon="{{user.avatar}}"></mat-icon>{{user.name}}  
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="wrapper">
+        <router-outlet></router-outlet>
+      </div>
+      <p *ngFor="let content of fillerContent">{{content}}</p>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
