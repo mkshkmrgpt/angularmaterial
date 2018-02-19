@@ -6,6 +6,7 @@ import { PhonebookAppComponent } from './phonebook-app.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { NotesComponent } from "./components/notes/notes.component";
 
 import { MaterialModule } from "../material.module";
 import { FormsModule } from "@angular/forms";
@@ -31,6 +32,11 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   providers : [UserService],
-  declarations: [PhonebookAppComponent, MainContentComponent, ToolbarComponent, SidenavComponent]
+  declarations: [
+    PhonebookAppComponent,
+    MainContentComponent,
+    ToolbarComponent, 
+    SidenavComponent, 
+    NotesComponent]
 })
 export class PhonebookModule { }
