@@ -34,4 +34,13 @@ export class UserService {
       console.log("Faild to log users")
     })
   }
+
+
+  addUser(user: User): any {
+    return new Promise((resolver, reject)=>{
+      user.id = this.dataStore.users.length+1
+      this.dataStore.users.push(user)
+      resolver(user)
+    })
+  }
 }

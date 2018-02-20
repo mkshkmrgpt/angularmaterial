@@ -9,10 +9,11 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { NotesComponent } from "./components/notes/notes.component";
 
 import { MaterialModule } from "../material.module";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { CommonModule } from '@angular/common';
 import { UserService } from "./services/user.service";
+import { NewContactDialogComponent } from './components/new-contact-dialog/new-contact-dialog.component';
 
 const routes: Routes = [
   {path:'', component: PhonebookAppComponent,
@@ -29,6 +30,7 @@ const routes: Routes = [
     MaterialModule,
     FormsModule,
     FlexLayoutModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   providers : [UserService],
@@ -37,6 +39,10 @@ const routes: Routes = [
     MainContentComponent,
     ToolbarComponent, 
     SidenavComponent, 
-    NotesComponent]
+    NotesComponent, NewContactDialogComponent],
+
+    entryComponents:[
+      NewContactDialogComponent
+    ]
 })
 export class PhonebookModule { }

@@ -4,6 +4,16 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1 class="phonebook">Phonebook</h1>
+    <span class="example-spacer"></span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="openNewContactDialog()">
+          <mat-icon>dialpad</mat-icon>
+          <span>New contact</span>
+        </button>
+      </mat-menu>
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">

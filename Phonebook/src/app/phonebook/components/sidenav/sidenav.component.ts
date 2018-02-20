@@ -4,6 +4,8 @@ import { Observable } from 'rxjs/Observable';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { NewContactDialogComponent } from '../new-contact-dialog/new-contact-dialog.component';
 
 @Component({
   selector: 'app-sidenav',
@@ -29,7 +31,8 @@ export class SidenavComponent implements OnInit {
   constructor(changeDetectorRef: ChangeDetectorRef,
     media: MediaMatcher,
     private userService: UserService,
-    private router: Router) {
+    private router: Router,
+    private dialog: MatDialog) {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
@@ -46,5 +49,16 @@ export class SidenavComponent implements OnInit {
     }
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this._mobileQueryListener);
-  }
+    }
+
+    openNewContactDialog(): void{
+      let dialogRef = this.dialog.open(NewContactDialogComponent,{
+        width: '450px'
+      })
+
+      dialogRef.afterClosed().subscribe(result=>{
+        console.log("Dialog was closed")
+      })
+
+    }
 }
